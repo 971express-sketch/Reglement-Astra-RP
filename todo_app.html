@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>To-Do List App</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #121212;
+            color: #ffffff;
+            margin: 0;
+            padding: 20px;
+        }
+        #app {
+            max-width: 600px;
+            margin: auto;
+        }
+        input[type='text'] {
+            width: 70%;
+            padding: 10px;
+        }
+        button {
+            padding: 10px;
+            margin-left: 5px;
+        }
+        ul {
+            list-style-type: none;
+            padding: 0;
+        }
+        li {
+            padding: 10px;
+            background: #1e1e1e;
+            border-radius: 5px;
+            margin: 5px 0;
+        }
+        .completed {
+            text-decoration: line-through;
+            color: gray;
+        }
+        .dark-theme {
+            background-color: #121212;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    <div id="app">
+        <h1>To-Do List</h1>
+        <input type="text" id="task-input" placeholder="Add a new task..." />
+        <button id="add-task">Add Task</button>
+        <select id="filter-tasks">
+            <option value="all">All</option>
+            <option value="completed">Completed</option>
+            <option value="active">Active</option>
+        </select>
+        <ul id="task-list"></ul>
+    </div>
+    <script>
+        const taskInput = document.getElementById('task-input');
+        const addTaskButton = document.getElementById('add-task');
+        const taskList = document.getElementById('task-list');
+        const filterTasks = document.getElementById('filter-tasks');
+
+        let tasks = JSON.parse(localStorage.getItem('tasks')) || [];
+
+        function renderTasks() {
+            taskList.innerHTML = '';
+            tasks.forEach((task, index) => {
+                const li = document.createElement('li');
+                li.textContent = task.text;
+                if (task.completed) {
+                    li.classList.add('completed');
+                }
+                li.addEventListener('click', () => toggleTaskCompletion(index));
+                li.addEventListener('dblclick', () => editTask(index));
+                taskList.appendChild(li);
+            });
+        }
+
+        function toggleTaskCompletion(index) {
+            tasks[index].completed = !tasks[index].completed;
+            saveTasks();
+            renderTasks();
+        }
+
+        function editTask(index) {
+            const newTask = prompt('Edit task:', tasks[index].text);
+            if (newTask !== null) {
+                tasks[index].text = newTask;
+                saveTasks();
+                renderTasks();
+            }
+        }
+
+        function addTask() {
+            const taskText = taskInput.value;
+            if (taskText) {
+                tasks.push({ text: taskText, completed: false });
+                taskInput.value = '';
+                saveTasks();
+                renderTasks();
+            }
+        }
+
+        function saveTasks() {
+            localStorage.setItem('tasks', JSON.stringify(tasks));
+        }
+
+        function filterTaskList() {
+            const filter = filterTasks.value;
+            const filteredTasks = tasks.filter(task => {
+                if (filter === 'completed') return task.completed;
+                if (filter === 'active') return !task.completed;
+                return true;
+            });
+            taskList.innerHTML = '';
+            filteredTasks.forEach(task => {
+                const li = document.createElement('li');
+                li.textContent = task.text;
+                if (task.completed) {
+                    li.classList.add('completed');
+                }
+                taskList.appendChild(li);
+            });
+        }
+
+        addTaskButton.addEventListener('click', addTask);
+        filterTasks.addEventListener('change', filterTaskList);
+
+        renderTasks();
+    </script>
+</body>
+</html>
