@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weather Dashboard</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #121212;
+            color: #ffffff;
+            margin: 0;
+            padding: 20px;
+        }
+        .container {
+            max-width: 600px;
+            margin: auto;
+            text-align: center;
+        }
+        input {
+            padding: 10px;
+            width: 80%;
+            margin-bottom: 20px;
+        }
+        .weather-info {
+            background-color: #1e1e1e;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.5);
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Weather Dashboard</h1>
+        <input type="text" id="locationInput" placeholder="Enter a city or location" />
+        <button onclick="fetchWeather()">Get Weather</button>
+        <div class="weather-info" id="weatherInfo" style="display: none;"></div>
+    </div>
+
+    <script>
+        const apiKey = 'YOUR_API_KEY'; // Replace with your OpenWeatherMap API Key
+
+        async function fetchWeather() {
+            const location = document.getElementById('locationInput').value;
+            const response = await fetch(`https://api.openweathermap.org/data/2.5/weather?q=${location}&appid=${apiKey}&units=metric`);
+            if (response.ok) {
+                const data = await response.json();
+                displayWeather(data);
+            } else {
+                alert('Location not found!');
+            }
+        }
+
+        function displayWeather(data) {
+            const weatherDiv = document.getElementById('weatherInfo');
+            const temp = data.main.temp;
+            const humidity = data.main.humidity;
+            const windSpeed = data.wind.speed;
+            const weatherDescription = data.weather[0].description;
+            weatherDiv.innerHTML = `<h2>${data.name}</h2>\n                <p>${weatherDescription}</p>\n                <p>Temperature: ${temp} °C</p>\n                <p>Humidity: ${humidity} %</p>\n                <p>Wind Speed: ${windSpeed} m/s</p>`;
+            weatherDiv.style.display = 'block';
+        }
+    </script>
+</body>
+</html>
