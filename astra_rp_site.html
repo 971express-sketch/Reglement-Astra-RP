@@ -1,0 +1,570 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Astra RP — Règlement Officiel</title>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --purple:#7c4dff;--purple-light:#b89af5;--purple-dim:rgba(120,80,220,0.15);
+  --bg:#0a0a0f;--bg2:#10101a;--bg3:#14141f;
+  --border:rgba(255,255,255,0.08);--border2:rgba(255,255,255,0.12);
+  --text:#e8e8f0;--text2:rgba(255,255,255,0.65);--text3:rgba(255,255,255,0.35);
+  --amber:#f4c775;--amber-bg:rgba(186,117,23,0.12);--amber-border:rgba(186,117,23,0.3);
+  --red:#f09595;--red-bg:rgba(226,75,74,0.1);--red-border:rgba(226,75,74,0.25);
+  --green:#c0dd97;--green-bg:rgba(99,153,34,0.12);--green-border:rgba(99,153,34,0.3);
+}
+html{scroll-behavior:smooth}
+body{font-family:'Segoe UI',system-ui,sans-serif;background:var(--bg);color:var(--text);min-height:100vh}
+
+/* NAV */
+nav{background:var(--bg2);border-bottom:0.5px solid var(--border);position:sticky;top:0;z-index:100}
+.nav-inner{max-width:1100px;margin:0 auto;padding:0 24px;display:flex;align-items:center;justify-content:space-between;height:60px}
+.nav-logo{display:flex;align-items:center;gap:12px;text-decoration:none}
+.nav-logo svg{width:36px;height:36px}
+.nav-logo-text{font-size:15px;font-weight:600;color:var(--text);letter-spacing:1px}
+.nav-links{display:flex;align-items:center;gap:4px}
+.nav-links a{font-size:12px;color:var(--text3);text-decoration:none;padding:6px 12px;border-radius:6px;transition:all 0.15s;letter-spacing:0.5px}
+.nav-links a:hover{background:rgba(255,255,255,0.05);color:var(--text2)}
+.nav-owner{display:flex;align-items:center;gap:8px;background:var(--amber-bg);border:0.5px solid var(--amber-border);border-radius:20px;padding:4px 12px 4px 8px}
+.nav-owner-dot{width:22px;height:22px;border-radius:50%;background:rgba(120,80,220,0.4);border:1px solid var(--purple-light);display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:600;color:var(--purple-light)}
+.nav-owner span{font-size:11px;color:var(--amber)}
+
+/* HERO */
+.hero{background:var(--bg2);border-bottom:0.5px solid var(--border);padding:60px 24px}
+.hero-inner{max-width:1100px;margin:0 auto;display:flex;align-items:center;gap:40px}
+.hero-logo svg{width:110px;opacity:0.95}
+.hero-text h1{font-size:36px;font-weight:700;color:var(--text);letter-spacing:-0.5px;margin-bottom:10px}
+.hero-text h1 span{color:var(--purple-light)}
+.hero-text p{font-size:14px;color:var(--text2);line-height:1.7;max-width:520px}
+.hero-stats{display:flex;gap:24px;margin-top:24px}
+.hero-stat{text-align:center}
+.hero-stat .val{font-size:28px;font-weight:700;color:var(--purple-light)}
+.hero-stat .lbl{font-size:11px;color:var(--text3);letter-spacing:0.5px;margin-top:2px}
+.hero-badge{display:inline-flex;align-items:center;gap:6px;background:rgba(120,80,220,0.15);border:0.5px solid rgba(120,80,220,0.3);border-radius:20px;padding:4px 14px;font-size:11px;color:var(--purple-light);margin-bottom:16px;letter-spacing:0.5px}
+
+/* LAYOUT */
+.wrap{max-width:1100px;margin:0 auto;padding:48px 24px}
+.section-anchor{padding-top:80px;margin-top:-40px}
+
+/* SECTION HEADER */
+.section-header{display:flex;align-items:center;gap:14px;margin-bottom:28px;padding-bottom:16px;border-bottom:0.5px solid var(--border)}
+.section-icon{width:40px;height:40px;border-radius:10px;background:var(--purple-dim);border:0.5px solid rgba(120,80,220,0.3);display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.section-icon svg{width:20px;height:20px;color:var(--purple-light);fill:currentColor}
+.section-header h2{font-size:20px;font-weight:600;color:var(--text)}
+.section-header p{font-size:12px;color:var(--text3);margin-top:2px}
+
+/* CARDS */
+.cards-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(320px,1fr));gap:16px}
+.card{background:var(--bg3);border:0.5px solid var(--border);border-radius:12px;padding:20px 22px}
+.card-full{grid-column:1/-1}
+.card h3{font-size:13px;font-weight:600;color:var(--purple-light);margin-bottom:12px;display:flex;align-items:center;gap:8px}
+.card h3 .num{background:rgba(120,80,220,0.2);color:var(--purple-light);font-size:10px;padding:2px 7px;border-radius:20px;font-weight:500}
+ul.rules{list-style:none;display:flex;flex-direction:column;gap:7px}
+ul.rules li{font-size:13px;line-height:1.6;color:var(--text2);padding-left:14px;position:relative}
+ul.rules li::before{content:'';position:absolute;left:0;top:8px;width:5px;height:5px;border-radius:50%;background:var(--purple)}
+ul.rules li strong{color:var(--text);font-weight:500}
+
+/* ALERTS */
+.alert{border-radius:8px;padding:11px 15px;font-size:12.5px;line-height:1.6;margin-top:12px}
+.alert.warning{background:var(--amber-bg);border:0.5px solid var(--amber-border);color:var(--amber)}
+.alert.info{background:var(--purple-dim);border:0.5px solid rgba(120,80,220,0.25);color:var(--purple-light);font-style:italic}
+.alert.danger{background:var(--red-bg);border:0.5px solid var(--red-border);color:var(--red)}
+.alert.success{background:var(--green-bg);border:0.5px solid var(--green-border);color:var(--green)}
+
+/* TAGS */
+.tags{display:flex;flex-wrap:wrap;gap:4px;margin-top:8px}
+.tag{display:inline-block;font-size:11px;padding:2px 9px;border-radius:20px}
+.tag.red{background:rgba(226,75,74,0.15);color:var(--red);border:0.5px solid var(--red-border)}
+.tag.green{background:var(--green-bg);color:var(--green);border:0.5px solid var(--green-border)}
+.tag.purple{background:var(--purple-dim);color:var(--purple-light);border:0.5px solid rgba(120,80,220,0.3)}
+
+/* TABLE */
+table.t{width:100%;border-collapse:collapse;font-size:12.5px;margin-top:10px}
+table.t th{text-align:left;padding:8px 10px;font-size:11px;color:var(--text3);text-transform:uppercase;letter-spacing:1px;border-bottom:0.5px solid var(--border);font-weight:400}
+table.t td{padding:8px 10px;border-bottom:0.5px solid rgba(255,255,255,0.04);color:var(--text2);vertical-align:top}
+table.t tr:last-child td{border-bottom:none}
+table.t td strong{color:var(--text);font-weight:500}
+
+/* LEXIQUE ITEMS */
+.lexique-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:14px}
+.lex-card{background:var(--bg3);border:0.5px solid var(--border);border-radius:12px;padding:18px 20px;border-left:2px solid var(--purple)}
+.lex-card h3{font-size:13px;font-weight:600;color:var(--purple-light);margin-bottom:8px}
+.lex-card p{font-size:12.5px;color:var(--text2);line-height:1.6}
+.lex-card .example{font-size:11.5px;color:var(--text3);margin-top:8px;padding-top:8px;border-top:0.5px solid var(--border);font-style:italic}
+
+/* DOTS */
+.dot{display:inline-block;width:7px;height:7px;border-radius:50%;margin-right:6px;vertical-align:middle}
+.dot.red{background:#e24b4a}.dot.green{background:#639922}.dot.amber{background:#ef9f27}
+
+/* BREADCRUMBS */
+.breadcrumb{display:flex;gap:8px;align-items:center;margin-bottom:32px}
+.breadcrumb a{font-size:12px;color:var(--text3);text-decoration:none}
+.breadcrumb a:hover{color:var(--text2)}
+.breadcrumb span{font-size:12px;color:var(--text3)}
+
+/* STICKY SIDEBAR TOC */
+.page-layout{display:grid;grid-template-columns:1fr 220px;gap:32px;align-items:start}
+.toc{background:var(--bg3);border:0.5px solid var(--border);border-radius:12px;padding:18px;position:sticky;top:80px}
+.toc h4{font-size:10px;letter-spacing:1.5px;color:var(--text3);text-transform:uppercase;margin-bottom:12px}
+.toc a{display:flex;align-items:center;gap:8px;font-size:12px;color:var(--text3);text-decoration:none;padding:5px 0;transition:color 0.15s;border-left:2px solid transparent;padding-left:8px;margin-left:-8px}
+.toc a:hover{color:var(--purple-light);border-left-color:rgba(120,80,220,0.4)}
+.toc a.active{color:var(--purple-light);border-left-color:var(--purple)}
+
+/* FOOTER */
+footer{background:var(--bg2);border-top:0.5px solid var(--border);padding:32px 24px;margin-top:60px}
+.footer-inner{max-width:1100px;margin:0 auto;display:flex;align-items:center;justify-content:space-between}
+.footer-logo{font-size:13px;font-weight:600;color:var(--purple-light);letter-spacing:1px}
+.footer-info{font-size:11px;color:var(--text3)}
+.footer-owner{font-size:11px;color:var(--amber)}
+
+/* MOBILE */
+@media(max-width:768px){
+  .page-layout{grid-template-columns:1fr}
+  .toc{display:none}
+  .hero-inner{flex-direction:column;gap:24px}
+  .hero-stats{gap:16px}
+  .hero-text h1{font-size:26px}
+  .nav-links{display:none}
+  .cards-grid{grid-template-columns:1fr}
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-inner">
+    <a class="nav-logo" href="#accueil">
+      <svg viewBox="0 0 40 40" xmlns="http://www.w3.org/2000/svg">
+        <polygon points="20,3 30,35 10,35" fill="none" stroke="#7c4dff" stroke-width="2"/>
+        <polygon points="20,10 27,32 13,32" fill="#7c4dff" opacity="0.35"/>
+        <line x1="8" y1="3" x2="32" y2="3" stroke="#b89af5" stroke-width="2"/>
+      </svg>
+      <span class="nav-logo-text">ASTRA RP</span>
+    </a>
+    <div class="nav-links">
+      <a href="#lexique">Lexique</a>
+      <a href="#general">Général</a>
+      <a href="#illegal">Illégal</a>
+      <a href="#police">Police</a>
+      <a href="#ems">EMS</a>
+      <a href="#prison">Prison</a>
+      <a href="#mecano">Mécano</a>
+    </div>
+    <div class="nav-owner">
+      <div class="nav-owner-dot">J</div>
+      <span>Justin — Propriétaire</span>
+    </div>
+  </div>
+</nav>
+
+<!-- HERO -->
+<div class="hero" id="accueil">
+  <div class="hero-inner">
+    <div class="hero-logo">
+      <svg viewBox="0 0 140 140" xmlns="http://www.w3.org/2000/svg">
+        <polygon points="70,8 105,125 35,125" fill="none" stroke="#7c4dff" stroke-width="3"/>
+        <polygon points="70,30 95,112 45,112" fill="#7c4dff" opacity="0.3"/>
+        <line x1="20" y1="8" x2="120" y2="8" stroke="#b89af5" stroke-width="2.5"/>
+        <line x1="35" y1="8" x2="10" y2="70" stroke="#7c4dff" stroke-width="2"/>
+        <line x1="105" y1="8" x2="130" y2="70" stroke="#7c4dff" stroke-width="2"/>
+        <text x="70" y="138" text-anchor="middle" font-size="11" fill="#b89af5" font-family="sans-serif" letter-spacing="4" font-weight="600">ASTRA RP</text>
+      </svg>
+    </div>
+    <div class="hero-text">
+      <div class="hero-badge">v1.0 — Règlement officiel</div>
+      <h1>Bienvenue sur <span>Astra RP</span></h1>
+      <p>Ce site centralise l'ensemble du règlement officiel du serveur. Consultez chaque section pour connaître les règles en vigueur. Le respect de ces règles est obligatoire pour tous les joueurs sans exception.</p>
+      <div class="hero-stats">
+        <div class="hero-stat"><div class="val">7</div><div class="lbl">Termes lexique</div></div>
+        <div class="hero-stat"><div class="val">12</div><div class="lbl">Règles générales</div></div>
+        <div class="hero-stat"><div class="val">12</div><div class="lbl">Règles illégales</div></div>
+        <div class="hero-stat"><div class="val">5</div><div class="lbl">Règlements métiers</div></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="wrap">
+  <div class="page-layout">
+    <div>
+
+      <!-- BIENVEILLANCE -->
+      <div class="card card-full" style="background:rgba(120,80,220,0.06);border-color:rgba(120,80,220,0.2);margin-bottom:40px">
+        <h3 style="color:var(--purple-light);font-size:15px;margin-bottom:10px">Bienveillance entre joueurs</h3>
+        <p style="font-size:13px;color:var(--text2);line-height:1.7">Astra RP est avant tout un serveur de jeu. Tout le monde est là pour passer un bon moment. Pensez que certaines personnes viennent ici pour s'amuser entre amis, décompresser après le travail, etc. Il est très important de ne pas nuire à l'expérience de jeu des autres et de réellement s'investir dans son RolePlay. N'oubliez pas que vous incarnez avant tout un personnage — cela ne doit pas aller au-dessus du jeu.</p>
+        <div class="alert info" style="margin-top:14px">Nous vous souhaitons un excellent jeu sur Astra RP !</div>
+      </div>
+
+      <!-- LEXIQUE -->
+      <div class="section-anchor" id="lexique"></div>
+      <div class="section-header">
+        <div class="section-icon">
+          <svg viewBox="0 0 20 20"><path d="M3 3h14v1H3V3zm0 3h10v1H3V6zm0 3h14v1H3V9zm0 3h8v1H3v-1z"/></svg>
+        </div>
+        <div>
+          <h2>Lexique RP</h2>
+          <p>Termes et définitions essentiels du RolePlay</p>
+        </div>
+      </div>
+      <div class="lexique-grid">
+        <div class="lex-card">
+          <h3>01 — PowerGaming</h3>
+          <p>Consiste à faire quelque chose d'<strong>impossible dans la vie réelle</strong>, ou à s'octroyer un avantage sans donner de chance à la partie adverse. Les interactions doivent rester au plus proche de la réalité.</p>
+          <div class="example">Ex : Lors d'un accident à grande vitesse, jouez la scène comme elle se doit. Même chose lors d'un gazage lacrymogène.</div>
+        </div>
+        <div class="lex-card">
+          <h3>02 — Metagaming</h3>
+          <p>Utiliser des informations <strong>HRP (Hors-RP/Hors-Jeu)</strong> dans un contexte RP est strictement prohibé. Cela inclut les informations venant de Discord, Twitch, etc.</p>
+          <div class="example">L'expérience de jeu se fait exclusivement à travers votre personnage pendant le RolePlay.</div>
+        </div>
+        <div class="lex-card">
+          <h3>03 — Mass RP</h3>
+          <p>Prendre en compte la <strong>population de la ville</strong> et non du serveur. Chaque PNJ doit être considéré comme un être vivant, tout comme un joueur réel.</p>
+        </div>
+        <div class="lex-card">
+          <h3>04 — Fear RP</h3>
+          <p>Votre personnage doit ressentir la <strong>peur dans certaines situations</strong>. Le NoFear RP n'est pas toléré, quelle que soit la situation rencontrée.</p>
+        </div>
+        <div class="lex-card">
+          <h3>05 — Carkill</h3>
+          <p>Écraser volontairement un joueur sans raison valable est <strong>strictement interdit</strong> et sanctionnable immédiatement.</p>
+        </div>
+        <div class="lex-card">
+          <h3>06 — Freekill</h3>
+          <p>Tuer quelqu'un <strong>sans réel motif roleplay</strong> est complètement interdit. Déclarer une rébellion n'est pas une raison pour tuer tout le monde.</p>
+        </div>
+        <div class="lex-card" style="grid-column:1/-1">
+          <h3>07 — Copbait</h3>
+          <p>Il est interdit de <strong>provoquer la police</strong> dans le but de forcer une interaction RP. Les scènes polices doivent être amenées naturellement.</p>
+        </div>
+      </div>
+
+      <!-- RÈGLEMENT GÉNÉRAL -->
+      <div class="section-anchor" id="general"></div>
+      <div class="section-header" style="margin-top:52px">
+        <div class="section-icon">
+          <svg viewBox="0 0 20 20"><path d="M10 1l1.5 4h4l-3.2 2.4 1.2 3.8L10 9l-3.5 2.2 1.2-3.8L4.5 5h4L10 1z"/></svg>
+        </div>
+        <div>
+          <h2>Règlement général</h2>
+          <p>Règles applicables à tous les joueurs du serveur</p>
+        </div>
+      </div>
+      <div class="cards-grid">
+        <div class="card">
+          <h3><span class="num">1</span> Cohérence RP</h3>
+          <ul class="rules">
+            <li>Incarnez pleinement votre personnage en respectant sa biographie et son histoire.</li>
+            <li>Les scènes doivent toujours être logiques, crédibles et jouées jusqu'au bout.</li>
+          </ul>
+        </div>
+        <div class="card">
+          <h3><span class="num">2</span> Émancipation</h3>
+          <ul class="rules">
+            <li>Tout joueur est considéré comme majeur par la loi américaine, peu importe son âge réel.</li>
+            <li>Tous les "mineurs" sont considérés comme des majeurs grâce à l'émancipation (PPA, prison, métiers, etc.).</li>
+          </ul>
+        </div>
+        <div class="card card-full">
+          <h3><span class="num">3</span> Coma</h3>
+          <p style="font-size:11px;color:var(--text3);margin-bottom:10px;letter-spacing:0.5px;text-transform:uppercase">Règles identiques quelle que soit la raison du coma</p>
+          <ul class="rules">
+            <li>Sur une prise d'otage ou un braquage, si aucune réanimation n'a pu être faite : <strong>ne revenez pas sur les lieux avant 15 min minimum</strong>.</li>
+            <li>Dans le coma, vous n'avez plus la capacité de parler.</li>
+            <li>Après réanimation : pas le droit de tenir une arme ou de frapper quelqu'un avant <strong>5 minutes</strong>.</li>
+            <li>Si réanimé par un médecin : vous perdez la mémoire sur les <strong>15 minutes précédant le coma</strong>.</li>
+            <li>À l'hôpital : oubli des <strong>2 dernières heures</strong> de la scène vous ayant mené au coma.</li>
+            <li>Interdit d'empêcher un EMS de réanimer ou de cacher le corps. L'EMS peut attendre max <strong>2 minutes</strong>.</li>
+            <li><strong>Pendant un coma : pas de communication (micro ou "/me").</strong></li>
+          </ul>
+        </div>
+        <div class="card">
+          <h3><span class="num">4</span> Courtoisie envers autrui</h3>
+          <ul class="rules">
+            <li>Parlez aux individus de manière calme et courtoise. Les insultes OOC sont strictement interdites.</li>
+            <li>Les conflits HRP entre joueurs doivent être réglés en tickets staff, jamais en RP.</li>
+            <li>L'usage de termes prohibés (n-word, p-word, "viol") est strictement interdit et sanctionné immédiatement.</li>
+          </ul>
+        </div>
+        <div class="card">
+          <h3><span class="num">5</span> Prénoms et Noms interdits</h3>
+          <ul class="rules">
+            <li>Pas le droit d'avoir le même prénom/nom qu'une célébrité.</li>
+            <li>Noms humoristiques et irréels interdits (ex : Al Colique, Harry Cow…).</li>
+            <li>Après un wipe/mort RP, interdiction de recréer le même nom/prénom.</li>
+          </ul>
+        </div>
+        <div class="card">
+          <h3><span class="num">6</span> Provocations non-roleplay</h3>
+          <ul class="rules">
+            <li>Interdit de provoquer de façon non-roleplay ou de façon inutile et répétée des joueurs pour créer des scènes.</li>
+          </ul>
+        </div>
+        <div class="card">
+          <h3><span class="num">7</span> Chicken-run</h3>
+          <ul class="rules">
+            <li>Courir en zigzag pour éviter les projectiles (balles, objets…) est <strong>strictement interdit</strong>.</li>
+          </ul>
+        </div>
+        <div class="card card-full">
+          <h3><span class="num">9</span> Groupes et entreprises</h3>
+          <table class="t">
+            <thead><tr><th>Type</th><th>Limite de membres</th></tr></thead>
+            <tbody>
+              <tr><td>Entreprise standard</td><td><strong>24 personnes</strong></td></tr>
+              <tr><td>Entreprise de farm</td><td><strong>20 personnes</strong></td></tr>
+              <tr><td>Services d'urgence</td><td><strong>100 personnes</strong></td></tr>
+              <tr><td>Groupe / gang / cartel</td><td><strong>26 personnes</strong></td></tr>
+            </tbody>
+          </table>
+          <ul class="rules" style="margin-top:12px">
+            <li>Toutes alliances entre gangs sont interdites, uniquement les trèves sont acceptées.</li>
+            <li>Obligatoire d'utiliser votre véhicule de service lorsque vous travaillez.</li>
+          </ul>
+          <div class="alert warning">Au-delà des limites et sans accord du staff, le groupe sera dissous et toute action entreprise sera annulée.</div>
+        </div>
+        <div class="card">
+          <h3><span class="num">10</span> Zone Safe</h3>
+          <ul class="rules">
+            <li>Interdit de se rendre en Zone Safe pour fuir les conséquences d'une scène RP.</li>
+            <li>Les actes illégaux sont interdits en Zone Safe.</li>
+          </ul>
+          <div class="alert info">Une dérogation concernant une scène prévue sur une zone safe peut être accordée via un dossier.</div>
+        </div>
+        <div class="card">
+          <h3><span class="num">12</span> Addendum clés</h3>
+          <ul class="rules">
+            <li>LSPD/BCSO/EMS/GROUPE 6 n'ont pas le droit de travailler dans l'illégal (sauf demande Staff).</li>
+            <li>Interdit de fuir à la nage ou de déconnecter après une poursuite.</li>
+          </ul>
+          <p style="font-size:11px;color:var(--text3);margin-top:10px;margin-bottom:4px">Types RP non acceptés :</p>
+          <div class="tags">
+            <span class="tag red">psychopathe</span>
+            <span class="tag red">viol</span>
+            <span class="tag red">pédophilie</span>
+            <span class="tag red">super-héros</span>
+            <span class="tag red">terroriste</span>
+          </div>
+          <div class="alert danger">Si abus et non respect des règles, nous serons dans l'obligation de vous sanctionner !</div>
+        </div>
+      </div>
+
+      <!-- RÈGLEMENT ILLÉGAL -->
+      <div class="section-anchor" id="illegal"></div>
+      <div class="section-header" style="margin-top:52px">
+        <div class="section-icon">
+          <svg viewBox="0 0 20 20"><path d="M10 2a6 6 0 100 12A6 6 0 0010 2zm0 2a4 4 0 110 8 4 4 0 010-8zm-1 5h2v2H9V9zm0-4h2v3H9V5z"/></svg>
+        </div>
+        <div>
+          <h2>Règlement illégal</h2>
+          <p>Règles spécifiques aux activités et organisations illégales</p>
+        </div>
+      </div>
+      <div class="cards-grid">
+        <div class="card card-full">
+          <h3><span class="num">1</span> Loot — limitations</h3>
+          <ul class="rules">
+            <li>Interdit de voler plus de <strong>50% de l'argent propre/sale</strong>.</li>
+            <li>Interdit de voler plus de <strong>50% d'une cargaison d'item</strong> d'un circuit de farm.</li>
+            <li>Interdit de voler les sacs, kevlars, armes, BMX, cartes d'identités et téléphones sans raison RP cohérente.</li>
+            <li>Interdit de free loot des joueurs aléatoirement sans raison RP cohérente.</li>
+          </ul>
+          <div class="alert info">Les limitations ci-dessus ne sont pas appliquées en cas de guerre officielle entre deux groupes sur accord des responsables illégaux.</div>
+        </div>
+        <div class="card">
+          <h3><span class="num">2</span> Vols et arnaques</h3>
+          <ul class="rules">
+            <li>Interdit de voler si vous êtes indépendant et ne faites pas partie d'un crew officiel.</li>
+            <li>L'arnaque est une forme de vol.</li>
+            <li>Interdit de forcer un joueur à retirer de l'argent à un ATM ou une banque.</li>
+          </ul>
+        </div>
+        <div class="card">
+          <h3><span class="num">3</span> Prises d'otages</h3>
+          <ul class="rules">
+            <li>Maximum : <strong>50 000$</strong> bas grade</li>
+            <li>Maximum : <strong>500 000$</strong> bras droit/gauche</li>
+            <li>Maximum : <strong>1 000 000$</strong> chef d'organisation</li>
+            <li>Interdit de tuer après une prise d'otage pour que la personne perde la mémoire.</li>
+          </ul>
+        </div>
+        <div class="card card-full">
+          <h3><span class="num">8</span> Braquages</h3>
+          <table class="t">
+            <thead><tr><th>Type</th><th>Min braqueurs</th><th>Max braqueurs</th><th>Fréquence</th></tr></thead>
+            <tbody>
+              <tr><td>Supérette</td><td>1</td><td>4</td><td>1/heure</td></tr>
+              <tr><td>Banque</td><td>2</td><td>5</td><td>1/12h</td></tr>
+              <tr><td>Bijouterie</td><td>4</td><td>8</td><td>1/jour</td></tr>
+              <tr><td>Banque principale</td><td>6</td><td>—</td><td>1/jour (crew officiel)</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="card card-full">
+          <h3><span class="num">10</span> Armes — restrictions par semaine</h3>
+          <ul class="rules">
+            <li><strong>Semaine 1 :</strong> Toutes armes non mentionnées ci-dessous.</li>
+            <li><strong>Semaine 2 :</strong> Pistolet calibre 50, Revolver, Pistolet mitrailleur, Pistolet automatique, Mitraillette légère, Canon scié, Mitraillette, Gusenberg, Fusil compact.</li>
+            <li><strong>Semaine 3 :</strong> Fusil militaire, Fusil d'assaut et Fusil de combat.</li>
+          </ul>
+        </div>
+        <div class="card">
+          <h3><span class="num">9</span> Organisations illégales</h3>
+          <ul class="rules">
+            <li>Noms faisant référence à des groupes illégaux réels : <strong>interdits</strong>.</li>
+            <li>Toute alliance entre illégaux indépendants : interdite.</li>
+            <li>Les membres doivent se revendiquer par leur tenue lors d'une action illégale.</li>
+          </ul>
+        </div>
+        <div class="card">
+          <h3><span class="num">12</span> KOTH</h3>
+          <ul class="rules">
+            <li>Doivent être joués sur la zone délimitée ou très proche.</li>
+            <li>Interdit de tirer depuis une autoroute.</li>
+            <li>Véhicules blindés interdits sur les points chauds.</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- POLICE -->
+      <div class="section-anchor" id="police"></div>
+      <div class="section-header" style="margin-top:52px">
+        <div class="section-icon">
+          <svg viewBox="0 0 20 20"><path d="M10 1l2 4h4l-3 2.5 1.2 4-4.2-2.5-4.2 2.5 1.2-4L4 5h4L10 1z"/></svg>
+        </div>
+        <div>
+          <h2>Règlement police</h2>
+          <p>LSPD, BCSO et forces de l'ordre</p>
+        </div>
+      </div>
+      <div class="cards-grid">
+        <div class="card card-full">
+          <ul class="rules">
+            <li>Les fouilles doivent obligatoirement être justifiées par un motif RP (ex : individu menaçant, état du Defcon).</li>
+            <li>Obligatoire de jouer les gardes à vue et non de les expédier — le but est d'apporter du jeu.</li>
+            <li>Lors d'un braquage de supérette, une seule patrouille peut intervenir. S'il y a plus de deux braqueurs, une deuxième patrouille peut être appelée.</li>
+            <li>Un agent n'a pas le droit de revendre ou de conserver des saisies sans une demande ripoux validée par un membre du staff.</li>
+            <li>Les sanctions doivent être cohérentes, justifiées et adaptées à la scène RP.</li>
+            <li>Descentes dans les QG d'organisations autorisées uniquement sur demande validée par un membre du staff.</li>
+            <li>La pose et le retrait d'un bracelet électronique doivent obligatoirement se faire dans un poste de police. Tout retrait en dehors est strictement interdit sauf ripoux.</li>
+            <li>Lors d'une négociation, les deux parties doivent faire preuve d'ouverture d'esprit et privilégier une issue pacifique.</li>
+            <li>Les forces de police doivent rester fair-play — le <strong>win-RP police est strictement interdit</strong>.</li>
+            <li>Les forces de l'ordre ne peuvent pas lancer une scène sans la poursuivre ensuite (arrestations, rapports d'intervention, etc.).</li>
+            <li>Le port de tout équipement de service en dehors du service est strictement interdit.</li>
+            <li>Interdit de faire une demande de renfort lorsque vous êtes braqué.</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- EMS -->
+      <div class="section-anchor" id="ems"></div>
+      <div class="section-header" style="margin-top:52px">
+        <div class="section-icon">
+          <svg viewBox="0 0 20 20"><path d="M7 2v5H2v6h5v5h6v-5h5V7h-5V2H7z"/></svg>
+        </div>
+        <div>
+          <h2>Règlement EMS</h2>
+          <p>Services médicaux d'urgence</p>
+        </div>
+      </div>
+      <div class="cards-grid">
+        <div class="card card-full">
+          <ul class="rules">
+            <li>Il est strictement interdit d'émettre plus d'une facture pour une même réanimation ou un même soin à un civil.</li>
+            <li>Il est interdit de donner ou revendre les équipements EMS (médikits, bandages…).</li>
+            <li>Il est interdit d'empêcher un EMS de réanimer ou de cacher le corps. L'EMS peut être forcé d'attendre maximum <strong>2 minutes</strong>, passé ce délai la personne sera réanimée.</li>
+            <li>Il est interdit pour un EMS de refuser de soigner, sauf si une règle contraire le prévoit.</li>
+            <li>Il est interdit pour un EMS de faire de l'illégal, sauf sous accord d'un Gérant Légal.</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- PRISON -->
+      <div class="section-anchor" id="prison"></div>
+      <div class="section-header" style="margin-top:52px">
+        <div class="section-icon">
+          <svg viewBox="0 0 20 20"><path d="M3 2h14v16H3V2zm2 2v12h10V4H5zm2 0h1v12H7V4zm4 0h1v12h-1V4z"/></svg>
+        </div>
+        <div>
+          <h2>Règlement prison</h2>
+          <p>Règles applicables au sein de l'établissement pénitentiaire</p>
+        </div>
+      </div>
+      <div class="cards-grid">
+        <div class="card card-full">
+          <ul class="rules">
+            <li>Il est interdit d'incarner un ripoux au sein de la prison, sauf si un dossier a été validé.</li>
+            <li>Pour tout type d'évasion, il est nécessaire de faire partie d'un groupe officiel et d'être haut gradé dans celui-ci.</li>
+            <li>La prise de service doit obligatoirement s'effectuer à la prison.</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- MÉCANO -->
+      <div class="section-anchor" id="mecano"></div>
+      <div class="section-header" style="margin-top:52px">
+        <div class="section-icon">
+          <svg viewBox="0 0 20 20"><path d="M13 1l2 2-3 3 1.5 1.5 3-3 2 2-4 4-1.5-1.5-5.5 5.5-1.5 1.5-3-3 1.5-1.5L9.5 9 8 7.5 12 3.5 13 1z"/></svg>
+        </div>
+        <div>
+          <h2>Règlement mécano</h2>
+          <p>Règles applicables aux mécaniciens du serveur</p>
+        </div>
+      </div>
+      <div class="cards-grid">
+        <div class="card card-full">
+          <ul class="rules">
+            <li>Interdit d'abuser de ses permissions de mécano pour effectuer des fulls perfs à ses propres véhicules gratuitement — sous peine de sanction lourde, même pour les membres d'un crew officiel.</li>
+            <li>Interdit d'utiliser ses permissions de mécanos en étant hors service, sans tenue et sans véhicule de service.</li>
+            <li>Interdit d'abuser de ses permissions de mécano pour mettre en fourrière des véhicules sans vraie justification.</li>
+            <li>Interdit d'effectuer des modifications sans le consentement du propriétaire du véhicule, sans aucune exception.</li>
+          </ul>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- TOC -->
+    <div>
+      <div class="toc">
+        <h4>Sommaire</h4>
+        <a href="#lexique">Lexique RP</a>
+        <a href="#general">Règlement général</a>
+        <a href="#illegal">Règlement illégal</a>
+        <a href="#police">Règlement police</a>
+        <a href="#ems">Règlement EMS</a>
+        <a href="#prison">Règlement prison</a>
+        <a href="#mecano">Règlement mécano</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<footer>
+  <div class="footer-inner">
+    <div class="footer-logo">ASTRA RP</div>
+    <div class="footer-info">Règlement officiel v1.0 — Tous droits réservés</div>
+    <div class="footer-owner">Propriétaire : Justin</div>
+  </div>
+</footer>
+
+<script>
+const tocLinks = document.querySelectorAll('.toc a');
+const anchors = ['lexique','general','illegal','police','ems','prison','mecano'];
+function updateToc(){
+  let current='';
+  for(const id of anchors){
+    const el=document.getElementById(id);
+    if(el&&window.scrollY+100>=el.offsetTop) current=id;
+  }
+  tocLinks.forEach(a=>{
+    a.classList.toggle('active',a.getAttribute('href')==='#'+current);
+  });
+}
+window.addEventListener('scroll',updateToc);
+updateToc();
+</script>
+</body>
+</html>
